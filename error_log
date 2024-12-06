@@ -1,0 +1,6 @@
+[16-Apr-2023 07:48:03 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit0c62ee06e53975cd91810fde82592c51" not found in /home1/mopart/parts.maccgarage.com/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home1/mopart/parts.maccgarage.com/vendor/autoload.php(7): ComposerAutoloaderInit0c62ee06e53975cd91810fde82592c51::getLoader()
+#1 /home1/mopart/parts.maccgarage.com/artisan(18): require('/home1/mopart/p...')
+#2 {main}
+  thrown in /home1/mopart/parts.maccgarage.com/vendor/composer/autoload_real.php on line 35
