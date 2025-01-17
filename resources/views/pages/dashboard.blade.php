@@ -1,123 +1,80 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-    <div class="row">
-
-        <h6>Parts Quoted</h6>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
+     <div class="row">
+	<h6>Parts Quoted</h6>
+        <div class="col-lg-6 col-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="card">
+                <span class="mask bg-primary opacity-10 border-radius-lg"></span>
                 <div class="card-body p-3 position-relative">
-                    <div class="row">
-                        <div class="col-12 text-start">
-                            <p class="text-sm mb-1 text-capitalize font-weight-bold">Today</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">You</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $todayCountUser }}
-                                    </h5>
-                                </div>
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">All</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $todayCountAll }}
-
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="row">
+                    <div class="col-8 text-start">
+                      <h4 class="text-white font-weight-bolder mb-0 mt-3">Today</h4>
+                      <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                        You {{ $todayCountUser }}
+                      </h5>
+                      <span class="text-white text-sm">All {{ $todayCountAll }}</span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
+            <div class="col-lg-6 col-md-6 col-12 mt-4 mt-md-0">
+              <div class="card">
+                <span class="mask bg-dark opacity-10 border-radius-lg"></span>
                 <div class="card-body p-3 position-relative">
-                    <div class="row">
-                        <div class="col-12 text-start">
-                            <p class="text-sm mb-1 text-capitalize font-weight-bold">Past month</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">You</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $monthCountUser }}
-
-                                    </h5>
-                                </div>
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">All</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $monthCountAll }}
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="row">
+                    <div class="col-8 text-start">
+                      <h4 class="text-white font-weight-bolder mb-0 mt-3">Past Month</h4>
+                      <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                        You {{ $monthCountUser }}
+                      </h5>
+                      <span class="text-white text-sm">All {{ $monthCountAll }}</span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
+          </div>
+          <div class="row mt-4">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="card">
+                <span class="mask bg-dark opacity-10 border-radius-lg"></span>
                 <div class="card-body p-3 position-relative">
-                    <div class="row">
-                        <div class="col-12 text-start">
-                            <p class="text-sm mb-1 text-capitalize font-weight-bold">Past Year</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">You</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $yearCountUser }}
-                                    </h5>
-                                </div>
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">All</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $yearCountAll  }}
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="row">
+                    <div class="col-8 text-start">
+                      <h4 class="text-white font-weight-bolder mb-0 mt-3">Past Year</h4>
+                      <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                        You {{ $yearCountUser }}
+                      </h5>
+                      <span class="text-white text-sm">All {{ $yearCountAll  }}</span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
+            <div class="col-lg-6 col-md-6 col-12 mt-4 mt-md-0">
+              <div class="card">
+                <span class="mask bg-dark opacity-10 border-radius-lg"></span>
                 <div class="card-body p-3 position-relative">
-                    <div class="row">
-                        <div class="col-12 text-start">
-                            <p class="text-sm mb-1 text-capitalize font-weight-bold">All time</p>
-
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">You</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $totalCountUser }}
-                                    </h5>
-                                </div>
-                                <div class="col-6">
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">All</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{ $totalCountAll }}
-                                    </h5>
-                                </div>
-                            </div>
-
-                        </div>
+                  <div class="row">
+                    <div class="col-8 text-start">
+                      <h4 class="text-white font-weight-bolder mb-0 mt-3">All Time</h4>
+                      <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                        You {{ $totalCountUser }}
+                      </h5>
+                      <span class="text-white text-sm">All {{ $totalCountAll }}</span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-
-
-    <div class="row mt-4">
-
-        <div class="col-lg-6">
-            <div class="card z-index-2">
+        <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+          <div class="card z-index-2">
 
                 <div class="card-body p-3">
                     <p class="text-sm mb-2 text-capitalize font-weight-bold">Parts Quoted (Past 30 days)</p>
@@ -128,11 +85,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-
-        </div>
     </div>
-
+    
 @endsection
 @push('dashboard')
 
@@ -150,7 +104,7 @@
             {{--            borderWidth: 0,--}}
             {{--            borderRadius: 4,--}}
             {{--            borderSkipped: false,--}}
-            {{--            backgroundColor: "rgba(255, 255, 255, 0.8)",--}}
+            {{--            backgroundColor: "#5a5fe0 ",--}}
             {{--            data: @json($userQuotesByDay),--}}
             {{--            maxBarThickness: 6--}}
             {{--        }]--}}
@@ -248,7 +202,7 @@
                         tension: 0.4,
                         borderWidth: 0,
                         pointRadius: 0,
-                        borderColor: "rgba(23, 193, 232)",
+                        borderColor: "#5a5fe0",
                         borderWidth: 3,
                         backgroundColor: gradientStroke1,
                         fill: true,

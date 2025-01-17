@@ -53,9 +53,9 @@ $colors: (
 ) !default;
 // scss-docs-end colors-map
 
-$primary: #cb0c9f !default;
+$primary: #5a5fe0 !default;
 $secondary: #8392ab !default;
-$info: #17c1e8 !default;
+$info: #5a5fe0 !default;
 $success: #82d616 !default;
 $warning: #fbcf33 !default;
 $danger: #ea0606 !default;
@@ -77,8 +77,8 @@ $theme-colors: (
 // scss-docs-end theme-colors-map
 
 // Gradient colors
-$primary-gradient: #7928ca !default;
-$primary-gradient-state: #ff0080 !default;
+$primary-gradient: #5a5fe0 !default;
+$primary-gradient-state: #5a5fe0 !default;
 
 $secondary-gradient: #627594 !default;
 $secondary-gradient-state: #a8b8d8 !default;
@@ -95,8 +95,8 @@ $danger-gradient-state: #ff667c !default;
 $warning-gradient: #f53939 !default;
 $warning-gradient-state: #fbcf33 !default;
 
-$dark-gradient: #141727 !default;
-$dark-gradient-state: #3a416f !default;
+$dark-gradient: #5a5fe0 !default;
+$dark-gradient-state: #5a5fe0 !default;
 
 $light-gradient: #ced4da !default;
 $light-gradient-state: #ebeff4 !default;
@@ -559,13 +559,13 @@ $text-gradient-bg-clip: text !default;
 $text-gradient-text-fill: transparent !default;
 $text-gradient-position: relative !default;
 $text-gradient-zindex: 1 !default;
-//$text-gradient-bg-primary: linear-gradient(310deg, #7928ca, #ff0080) !default;
+//$text-gradient-bg-primary: linear-gradient(310deg, #5a5fe0, #5a5fe0) !default;
 $text-gradient-bg-primary: linear-gradient(310deg, #2152ff, #21d4fd) !default;
 $text-gradient-bg-info: linear-gradient(310deg, #2152ff, #21d4fd) !default;
 $text-gradient-bg-success: linear-gradient(310deg, #17ad37, #c1e823) !default;
 $text-gradient-bg-warning: linear-gradient(310deg, #f53939, #fbcf33) !default;
 $text-gradient-bg-danger: linear-gradient(310deg, #d60808, #ff6690) !default;
-$text-gradient-bg-dark: linear-gradient(310deg, #141727, #3a416f) !default;
+$text-gradient-bg-dark: linear-gradient(310deg, #5a5fe0, #5a5fe0) !default;
 
 $initialism-font-size: $small-font-size !default;
 
@@ -780,7 +780,7 @@ $btn-info-font-color: #fff !default;
 $btn-success-font-color: #fff !default;
 $btn-warning-font-color: #fff !default;
 $btn-dark-font-color: #fff !default;
-$btn-light-font-color: #3a416f !default;
+$btn-light-font-color: #5a5fe0 !default;
 
 $btn-font-colors: () !default;
 

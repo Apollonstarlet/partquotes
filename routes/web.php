@@ -22,7 +22,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('migrate', function() { Artisan::call('thinker'); return back();});
+// Cache Clear
+Route::get('clear', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('route:clear');
+    return back();
+});
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'home']);
 
