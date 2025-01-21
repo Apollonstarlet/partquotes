@@ -226,6 +226,11 @@ class QuoteRequestController extends Controller {
             $requests = $response['rqs']['rq'];
 
             foreach ($requests as $request){
+                $lastRequest = QuoteRequest::where('rfno', $request['rfno'])->first();
+                if(!empty($lastRequest)){
+                    continue;
+                }
+
                 $quoteRequest = new QuoteRequest();
                 $quoteRequest->rfno = $request['rfno'];
                 $quotedate = DateTime::CreateFromFormat('d/m/Y H:i:s', $request['date']);

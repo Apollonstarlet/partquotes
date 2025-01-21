@@ -29,23 +29,23 @@
                                 <span class="text-xxs mr-2">VIEW:  &nbsp;</span>
 
                                 <a href="?limit=500">
-                                    <span class="badge {{ $limit === '500' ? 'badge-dark' : 'badge-secondary' }}"
+                                    <span class="badge {{ $limit === '500' ? 'badge-primary' : 'badge-secondary' }}"
                                           role="button">500</span>
                                 </a>
                                 <a href="?limit=1000">
-                                    <span class="badge {{ $limit === '1000' ? 'badge-dark' : 'badge-secondary' }}"
+                                    <span class="badge {{ $limit === '1000' ? 'badge-primary' : 'badge-secondary' }}"
                                           role="button">1k</span>
                                 </a>
                                 <a href="?limit=2000">
-                                    <span class="badge {{ $limit === '2000' ? 'badge-dark' : 'badge-secondary' }}"
+                                    <span class="badge {{ $limit === '2000' ? 'badge-primary' : 'badge-secondary' }}"
                                           role="button">2k</span>
                                 </a>
                                 <a href="?limit=5000">
-                                    <span class="badge {{ $limit === '5000' ? 'badge-dark' : 'badge-secondary' }}"
+                                    <span class="badge {{ $limit === '5000' ? 'badge-primary' : 'badge-secondary' }}"
                                           role="button">5k</span>
                                 </a>
                                 <a href="?limit=10000">
-                                    <span class="badge {{ $limit === '10000' ? 'badge-dark' : 'badge-secondary' }}"
+                                    <span class="badge {{ $limit === '10000' ? 'badge-primary' : 'badge-secondary' }}"
                                           role="button">10k</span>
                                 </a>
                             </small>
