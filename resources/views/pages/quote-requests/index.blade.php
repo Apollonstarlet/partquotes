@@ -19,7 +19,7 @@
                 <div class="card-header p-3">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
-                            <h5 class="mb-0">Quote Requests</h5>
+                        <a href="last" class="btn bg-gradient-dark mb-2 w-100">Last Request</a>
                         </div>
 
                         <div class="">

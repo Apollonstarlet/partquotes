@@ -27,7 +27,7 @@ class QuoteRequestController extends Controller {
         if ($limit && is_numeric($limit) && (int)$limit > 0) {
             Cookie::queue(Cookie::make('quote-request-limit', $limit, 525960));
         } else {
-            $limit = request()?->cookie('quote-request-limit') ?? 1000;
+            $limit = request()?->cookie('quote-request-limit') ?? 500;
         }
 
         $quoteRequests = QuoteRequestPart::with('quoteRequest')
@@ -201,5 +201,81 @@ class QuoteRequestController extends Controller {
      */
     public function destroy($id) {
         //
+    }
+
+    public function Last() {
+        //
+        $lastQuote = QuoteRequest::latest('id')->first();
+        $headers = ['Content-Type' => 'application/x-www-form-urlencoded'];
+        $endpoint = 'http://webserv.1stchoice.co.uk/1stchoiceServices/SupplierPub.asmx/GetOrders';
+        $parameters = http_build_query([
+            'username' => 'c232',
+            'password' => env('FIRST_CHOICE_PASSWORD'),
+            'lastRef' => $lastQuote->rfno,
+        ]);
+
+        $response = Http::withHeaders($headers)
+            ->get($endpoint . '?' . $parameters);
+
+        $html = html_entity_decode($response->body());
+        $responseXml = @simplexml_load_string($html, "SimpleXMLElement", LIBXML_NOCDATA);
+        $response = json_decode(json_encode($responseXml, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR); 
+
+        if(!empty($response['rqs']['rq'])){
+            
+            $requests = $response['rqs']['rq'];
+
+            foreach ($requests as $request){
+                $quoteRequest = new QuoteRequest();
+                $quoteRequest->rfno = $request['rfno'];
+                $quotedate = DateTime::CreateFromFormat('d/m/Y H:i:s', $request['date']);
+                $quoteRequest->date = $quotedate;
+                $quoteRequest->cdes = $request['cdes'] ? $request['cdes'] : null;
+                $quoteRequest->cmak = $request['cmak'] ? $request['cmak'] : null;
+                $quoteRequest->cran = $request['cran'] ? $request['cran'] : null;
+                $quoteRequest->cyer = $request['cyer'] ? $request['cyer'] : null;
+                $quoteRequest->cbdy = $request['cbdy'] ? $request['cbdy'] : null;
+                $quoteRequest->cbdt = $request['cbdt'] ? $request['cbdt'] : null;
+                $quoteRequest->cgbx = $request['cgbx'] ? $request['cgbx'] : null;
+                $quoteRequest->cfue = $request['cfue'] ? $request['cfue'] : null;
+                $quoteRequest->cvin = $request['cvin'] ? $request['cvin'] : null;
+                $quoteRequest->cenn = $request['cenn'] ? $request['cenn'] : null;
+                $quoteRequest->cccs = $request['cccs'] ? $request['cccs'] : null;
+                $quoteRequest->cclr = $request['cclr'] ? $request['cclr'] : null;
+                $quoteRequest->creg = $request['creg'] ? $request['creg'] : null;
+                $quoteRequest->unam = $request['unam'] ? $request['unam'] : null;
+                $quoteRequest->uloc = $request['uloc'] ? $request['uloc'] : null;
+                $quoteRequest->upos = $request['upos'] ? $request['upos'] : null;
+                $quoteRequest->uphn = $request['uphn'] ? $request['uphn'] : null;
+                $quoteRequest->umob = $request['umob'] ? $request['umob'] : null;
+                $quoteRequest->ueml = $request['ueml'] ? $request['ueml'] : null;
+                if(isset($request['part']['pid'])){
+                    $quoteRequest->multi = false;
+                } else{
+                    $quoteRequest->multi = true;
+                }
+                $quoteRequest->save();
+                if(isset($request['part']['pid'])){
+                    $quoteRequestPart = new QuoteRequestPart();
+                    $quoteRequestPart->rfno = $request['rfno'];
+                    $quoteRequestPart->part_id = $request['part']['pid'] ? $request['part']['pid'] : null;
+                    $quoteRequestPart->part_desc = $request['part']['pdsc'] ? $request['part']['pdsc'] : null;
+                    $quoteRequestPart->part_comment = $request['part']['pcmt'] ? $request['part']['pcmt'] : null;
+                    $quoteRequestPart->save();
+                } else{
+                    if(isset($request['part'])){
+                        foreach($request['part'] as $partorder){
+                            $quoteRequestPart = new QuoteRequestPart();
+                            $quoteRequestPart->rfno = $request['rfno'];
+                            $quoteRequestPart->part_id = $partorder['pid'] ? $partorder['pid'] : null;
+                            $quoteRequestPart->part_desc = $partorder['pdsc'] ? $partorder['pdsc'] : null;
+                            $quoteRequestPart->part_comment = $partorder['pcmt'] ? $partorder['pcmt'] : null;
+                            $quoteRequestPart->save();
+                        }
+                    }
+                }
+            }
+        }
+        return redirect()->back();
     }
 }
