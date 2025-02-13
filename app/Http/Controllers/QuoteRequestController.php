@@ -211,7 +211,7 @@ class QuoteRequestController extends Controller {
         $parameters = http_build_query([
             'username' => 'c232',
             'password' => env('FIRST_CHOICE_PASSWORD'),
-            'lastRef' => $lastQuote->rfno,
+            'lastRef' =>  $lastQuote->rfno,
         ]);
 
         $response = Http::withHeaders($headers)

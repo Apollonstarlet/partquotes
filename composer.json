@@ -9,13 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-libxml": "*",
+        "ext-simplexml": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.6",
-        "ext-simplexml": "*",
-        "ext-libxml": "*"
+        "maatwebsite/excel": "^1.1"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
