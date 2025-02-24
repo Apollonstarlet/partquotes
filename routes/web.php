@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('migrate', function() { Artisan::call('thinker'); return back();});
 // Cache Clear
 Route::get('clear', function() {
@@ -31,6 +32,7 @@ Route::get('clear', function() {
     $exitCode = Artisan::call('route:clear');
     return back();
 });
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'home']);
 
@@ -44,61 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
         try {
             $part_catalogs_api_key = 'OEM-API-A373331C-2684-4560-8F57-20180D8AEB08';
 
-            //            $response = Http::withHeaders([
-            //                'Accept' => 'application/json',
-            //                'Accept-Language' => 'en',
-            //                'Authorization' => $part_catalogs_api_key,
-            //            ])->withOptions([
-            //                'debug' => true,
-            //            ])->get('https://api.parts-catalogs.com/v1/car/info', [
-            //                'q' => 'Wvwzzz6rzhy164790',
-            //            ]);
-
-            //            $response = Http::withHeaders([
-            //                'Accept' => 'application/json',
-            //                'Accept-Language' => 'en',
-            //                'Authorization' => $part_catalogs_api_key,
-            //            ])->withOptions([
-            //                'debug' => true,
-            //            ])->get('https://api.parts-catalogs.com/v1/catalogs/vw/groups2', [
-            //                'carId' => '4791ec72b33d456a40aee7516c84745a',
-            //            ]);
-
-            //            $response = Http::withHeaders([
-            //                'Accept' => 'application/json',
-            //                'Accept-Language' => 'en',
-            //                'Authorization' => $part_catalogs_api_key,
-            //            ])->withOptions([
-            //                'debug' => true,
-            //            ])->get('https://api.parts-catalogs.com/v1/catalogs/vw/groups2', [
-            //                'carId' => '4791ec72b33d456a40aee7516c84745a',
-            //                'groupId' => 'IzHwn5qAMzAwMDLwn5qBNzIzMzAwMDIw8J-agjQ2NTUzNzY',
-            //            ]);
-
-            //            $response = Http::withHeaders([
-            //                'Accept' => 'application/json',
-            //                'Accept-Language' => 'en',
-            //                'Authorization' => $part_catalogs_api_key,
-            //            ])->withOptions([
-            //                'debug' => true,
-            //            ])->get('https://api.parts-catalogs.com/v1/catalogs/vw/parts2', [
-            //                'carId' => '4791ec72b33d456a40aee7516c84745a',
-            //                'groupId' => 'IzHwn5qAMzAwMDLwn5qBNzIzMzAwMDIw8J-agjQ2NTUzNzY',
-            //            ]);
-
-            //            $response = Http::withHeaders([
-            //                'Accept' => 'application/json',
-            //                'Accept-Language' => 'en',
-            //                'Authorization' => $part_catalogs_api_key,
-            //            ])->withOptions([
-            //                'debug' => true,
-            //            ])->get('https://api.parts-catalogs.com/v1/catalogs/vw/groups-suggest', [
-            //                'q' => 'Gearbox',
-            //            ]);
-            //
             $data = $response->json();
-
-            //  ['modelId' => $model_id, ]
 
             var_dump($data);
             // do something with $data
@@ -134,3 +82,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/last', [QuoteRequestController::class, 'Last']);
+Route::get('/autoquote-export', [PartQuoteController::class, 'export']);
+Route::get('/downlaod', [PartQuoteController::class, 'download']);
+Route::get('/quote-automate', [PartQuoteController::class, 'quoteAutomate']);
+Route::post('/upload', [PartQuoteController::class, 'upload'])->name('upload');

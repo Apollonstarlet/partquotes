@@ -377,9 +377,9 @@ class QuoteRequestController extends Controller {
                 if ($message !== 'OK') {
                     continue;
                 }
-
+		$temp = QuoteRequestPart::where('part_id', $val->part_id)->first();
                 $quotePart = new PartQuote();
-                $quotePart->quote_request_part_id = $val->part_id;
+                $quotePart->quote_request_part_id = $temp->id;
                 $quotePart->rfno = $val->rfno;
                 $quotePart->price = $autoQuote->price;
                 $quotePart->delivery = $autoQuote->delivery;
